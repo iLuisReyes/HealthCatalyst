@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthCatalystAssessment", "HealthCatalystAssessment\HealthCatalystAssessment.csproj", "{2536124A-5843-4785-A997-C519CAA6134A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthCatalystAssessment.Tests", "HealthCatalystAssessment.Tests\HealthCatalystAssessment.Tests.csproj", "{BA230E14-95E7-4953-9014-B3CB157AA6E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2536124A-5843-4785-A997-C519CAA6134A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2536124A-5843-4785-A997-C519CAA6134A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2536124A-5843-4785-A997-C519CAA6134A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2536124A-5843-4785-A997-C519CAA6134A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA230E14-95E7-4953-9014-B3CB157AA6E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA230E14-95E7-4953-9014-B3CB157AA6E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA230E14-95E7-4953-9014-B3CB157AA6E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA230E14-95E7-4953-9014-B3CB157AA6E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB0754DB-D68B-4628-9C1D-74222ED16D4C}
+	EndGlobalSection
+EndGlobal
