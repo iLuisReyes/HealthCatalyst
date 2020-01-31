@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
-namespace HealthCatalystAssessment.Models
+namespace HealthCatalyst.Assessment.API.Models
 {
     // Models used as parameters to AccountController actions.
 

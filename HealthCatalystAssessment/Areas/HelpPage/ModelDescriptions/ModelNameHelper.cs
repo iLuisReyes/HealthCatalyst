@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace HealthCatalystAssessment.Areas.HelpPage.ModelDescriptions
+namespace HealthCatalyst.Assessment.API.Areas.HelpPage.ModelDescriptions
 {
     internal static class ModelNameHelper
     {

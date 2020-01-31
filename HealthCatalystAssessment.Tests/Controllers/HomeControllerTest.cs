@@ -1,9 +1,9 @@
 ﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using HealthCatalystAssessment;
-using HealthCatalystAssessment.Controllers;
+using HealthCatalyst.Assessment.API;
+using HealthCatalyst.Assessment.API.Controllers;
 
-namespace HealthCatalystAssessment.Tests.Controllers
+namespace HealthCatalyst.Assessment.API.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest

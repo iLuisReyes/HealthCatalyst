@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace HealthCatalystAssessment.Areas.HelpPage.ModelDescriptions
+namespace HealthCatalyst.Assessment.API.Areas.HelpPage.ModelDescriptions
 {
     public class ComplexTypeModelDescription : ModelDescription
     {

@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Description;
 
-namespace HealthCatalystAssessment.Areas.HelpPage
+namespace HealthCatalyst.Assessment.API.Areas.HelpPage
 {
     public static class ApiDescriptionExtensions
     {

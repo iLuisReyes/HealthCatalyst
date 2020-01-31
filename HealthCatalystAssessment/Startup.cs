@@ -4,9 +4,9 @@ using System.Linq;
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(HealthCatalystAssessment.Startup))]
+[assembly: OwinStartup(typeof(HealthCatalyst.Assessment.API.Startup))]
 
-namespace HealthCatalystAssessment
+namespace HealthCatalyst.Assessment.API
 {
     public partial class Startup
     {

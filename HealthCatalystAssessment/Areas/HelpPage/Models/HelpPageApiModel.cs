@@ -2,15 +2,27 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http.Headers;
 using System.Web.Http.Description;
-using HealthCatalystAssessment.Areas.HelpPage.ModelDescriptions;
+using HealthCatalyst.Assessment.API.Areas.HelpPage.ModelDescriptions;
+using System.Net;
 
-namespace HealthCatalystAssessment.Areas.HelpPage.Models
+namespace HealthCatalyst.Assessment.API.Areas.HelpPage.Models
 {
     /// <summary>
     /// The model that represents an API displayed on the help page.
     /// </summary>
     public class HelpPageApiModel
     {
+
+        /// <summary>
+        /// List of HTTP response codes
+        /// </summary>
+        public IEnumerable<HttpStatusCode> HttpResponseCodes { get; set; }
+
+        /// <summary>
+        /// Flag to track authorization requirement
+        /// </summary>
+        public bool RequiresAuthorization { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="HelpPageApiModel"/> class.
         /// </summary>
@@ -86,14 +98,12 @@ namespace HealthCatalystAssessment.Areas.HelpPage.Models
 
         private static IList<ParameterDescription> GetParameterDescriptions(ModelDescription modelDescription)
         {
-            ComplexTypeModelDescription complexTypeModelDescription = modelDescription as ComplexTypeModelDescription;
-            if (complexTypeModelDescription != null)
+            if (modelDescription is ComplexTypeModelDescription complexTypeModelDescription)
             {
                 return complexTypeModelDescription.Properties;
             }
 
-            CollectionModelDescription collectionModelDescription = modelDescription as CollectionModelDescription;
-            if (collectionModelDescription != null)
+            if (modelDescription is CollectionModelDescription collectionModelDescription)
             {
                 complexTypeModelDescription = collectionModelDescription.ElementDescription as ComplexTypeModelDescription;
                 if (complexTypeModelDescription != null)

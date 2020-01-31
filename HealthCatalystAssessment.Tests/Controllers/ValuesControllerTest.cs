@@ -5,10 +5,10 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using HealthCatalystAssessment;
-using HealthCatalystAssessment.Controllers;
+using HealthCatalyst.Assessment.API;
+using HealthCatalyst.Assessment.API.Controllers;
 
-namespace HealthCatalystAssessment.Tests.Controllers
+namespace HealthCatalyst.Assessment.API.Tests.Controllers
 {
     [TestClass]
     public class ValuesControllerTest

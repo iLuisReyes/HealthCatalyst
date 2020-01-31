@@ -8,10 +8,10 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using HealthCatalystAssessment.Providers;
-using HealthCatalystAssessment.Models;
+using HealthCatalyst.Assessment.API.Providers;
+using HealthCatalyst.Assessment.API.Models;
 
-namespace HealthCatalystAssessment
+namespace HealthCatalyst.Assessment.API
 {
     public partial class Startup
     {

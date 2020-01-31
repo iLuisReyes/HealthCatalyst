@@ -13,12 +13,14 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using HealthCatalystAssessment.Models;
-using HealthCatalystAssessment.Providers;
-using HealthCatalystAssessment.Results;
+using HealthCatalyst.Assessment.API.Models;
+using HealthCatalyst.Assessment.API.Providers;
+using HealthCatalyst.Assessment.API.Results;
+using System.Web.Http.Description;
 
-namespace HealthCatalystAssessment.Controllers
+namespace HealthCatalyst.Assessment.API.Controllers
 {
+    [ApiExplorerSettings(IgnoreApi = true)]
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
@@ -62,7 +64,7 @@ namespace HealthCatalystAssessment.Controllers
             {
                 Email = User.Identity.GetUserName(),
                 HasRegistered = externalLogin == null,
-                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
+                LoginProvider = externalLogin?.LoginProvider
             };
         }
 
@@ -308,7 +310,7 @@ namespace HealthCatalystAssessment.Controllers
                         response_type = "token",
                         client_id = Startup.PublicClientId,
                         redirect_uri = new Uri(Request.RequestUri, returnUrl).AbsoluteUri,
-                        state = state
+                         state
                     }),
                     State = state
                 };
@@ -428,8 +430,10 @@ namespace HealthCatalystAssessment.Controllers
 
             public IList<Claim> GetClaims()
             {
-                IList<Claim> claims = new List<Claim>();
-                claims.Add(new Claim(ClaimTypes.NameIdentifier, ProviderKey, null, LoginProvider));
+                IList<Claim> claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.NameIdentifier, ProviderKey, null, LoginProvider)
+                };
 
                 if (UserName != null)
                 {

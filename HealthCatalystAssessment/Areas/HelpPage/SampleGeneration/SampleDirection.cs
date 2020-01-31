@@ -1,4 +1,4 @@
-namespace HealthCatalystAssessment.Areas.HelpPage
+namespace HealthCatalyst.Assessment.API.Areas.HelpPage
 {
     /// <summary>
     /// Indicates whether the sample is used for request or response

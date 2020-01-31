@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace HealthCatalystAssessment
+namespace HealthCatalyst.Assessment.API
 {
     public class FilterConfig
     {

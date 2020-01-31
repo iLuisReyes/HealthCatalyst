@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="HealthCatalystAssessment.WebApiApplication" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="HealthCatalyst.Assessment.API.WebApiApplication" Language="C#" %>

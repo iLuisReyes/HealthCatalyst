@@ -1,7 +1,7 @@
 using System.Web.Http;
 using System.Web.Mvc;
 
-namespace HealthCatalystAssessment.Areas.HelpPage
+namespace HealthCatalyst.Assessment.API.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {

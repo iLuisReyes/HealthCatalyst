@@ -2,11 +2,11 @@
 @using System.Web.Http.Controllers
 @using System.Web.Http.Description
 @using System.Collections.ObjectModel
-@using HealthCatalystAssessment.Areas.HelpPage.Models
+@using HealthCatalyst.Assessment.API.Areas.HelpPage.Models
 @model Collection<ApiDescription>
 
 @{
-    ViewBag.Title = "ASP.NET Web API Help Page";
+    ViewBag.Title = "HealthCatalyst Assessment API Help Page - Luis Reyes";
 
     // Group APIs by controller
     ILookup<HttpControllerDescriptor, ApiDescription> apiGroups = Model.ToLookup(api => api.ActionDescriptor.ControllerDescriptor);
@@ -25,10 +25,24 @@
         <div class="content-wrapper">
             <h2>Introduction</h2>
             <p>
-                Provide a general description of your APIs here.
+                This Help page defines the API specification of the Health Catalyst Assessment. The goal of the assignments, by which these endpoints facilitate, include the following:
+                <ul>
+                    <li>Provide a REST endpoint that takes a search input then returns a list of people whose first [and]/or last namematches the input.</li>
+                    <li>Seed the application with some users</li>
+                    <li>Provide a RESTful endpoint that allows additional new users</li>
+                    <li>Provide documentation to interact with the REST endpoints</li>
+                    <li>Use Entity Framework Code first to talk to the database</li>
+                    <li>Add automated unit tests</li>
+                    <li>Simulate latency as extra-credit</li>
+                    <li>Create a Powershell script as extra credit.  <a href="Powershell">Click on this link to download the script.</a> The script is ready setup to run as is.</li>
+                </ul>
+                The outcome of this assessment should reflect the depth and quality of the work of the candidate (myself).  Taking this into consideration, the two required endpoints have been added and I also added two additional endpoints to allow you to browse the database list and directly test in the browser.  
+                On a side note, there is some context with this API that was chosen to inject a little fun into this review.  
+                Specifically, the API assumes the consumer of the endpoints is a player or employee of the 1997-1998 Utah Jazz.  The people in this database are the teammate from that team in that infamous era.  Hope you have fun with this.
             </p>
         </div>
     </section>
+    <hr/>
     <section class="content-wrapper main-content clear-fix">
         @foreach (var group in apiGroups)
         {

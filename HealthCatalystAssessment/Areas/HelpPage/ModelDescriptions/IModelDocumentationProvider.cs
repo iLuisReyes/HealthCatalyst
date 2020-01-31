@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace HealthCatalystAssessment.Areas.HelpPage.ModelDescriptions
+namespace HealthCatalyst.Assessment.API.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

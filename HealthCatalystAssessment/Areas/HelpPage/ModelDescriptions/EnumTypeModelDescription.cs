@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace HealthCatalystAssessment.Areas.HelpPage.ModelDescriptions
+namespace HealthCatalyst.Assessment.API.Areas.HelpPage.ModelDescriptions
 {
     public class EnumTypeModelDescription : ModelDescription
     {

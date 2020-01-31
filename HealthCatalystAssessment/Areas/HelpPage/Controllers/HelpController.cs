@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using HealthCatalystAssessment.Areas.HelpPage.ModelDescriptions;
-using HealthCatalystAssessment.Areas.HelpPage.Models;
+using HealthCatalyst.Assessment.API.Areas.HelpPage.ModelDescriptions;
+using HealthCatalyst.Assessment.API.Areas.HelpPage.Models;
 
-namespace HealthCatalystAssessment.Areas.HelpPage.Controllers
+namespace HealthCatalyst.Assessment.API.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.
@@ -50,8 +50,7 @@ namespace HealthCatalystAssessment.Areas.HelpPage.Controllers
             if (!String.IsNullOrEmpty(modelName))
             {
                 ModelDescriptionGenerator modelDescriptionGenerator = Configuration.GetModelDescriptionGenerator();
-                ModelDescription modelDescription;
-                if (modelDescriptionGenerator.GeneratedModels.TryGetValue(modelName, out modelDescription))
+                if (modelDescriptionGenerator.GeneratedModels.TryGetValue(modelName, out ModelDescription modelDescription))
                 {
                     return View(modelDescription);
                 }

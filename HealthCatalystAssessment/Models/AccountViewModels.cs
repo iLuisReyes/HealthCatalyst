@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HealthCatalystAssessment.Models
+namespace HealthCatalyst.Assessment.API.Models
 {
     // Models returned by AccountController actions.
 

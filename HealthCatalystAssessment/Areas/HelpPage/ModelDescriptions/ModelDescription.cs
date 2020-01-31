@@ -1,6 +1,6 @@
 using System;
 
-namespace HealthCatalystAssessment.Areas.HelpPage.ModelDescriptions
+namespace HealthCatalyst.Assessment.API.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.

@@ -3,9 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthCatalystAssessment", "HealthCatalystAssessment\HealthCatalystAssessment.csproj", "{2536124A-5843-4785-A997-C519CAA6134A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthCatalyst.Assessment.API", "HealthCatalystAssessment\HealthCatalyst.Assessment.API.csproj", "{2536124A-5843-4785-A997-C519CAA6134A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthCatalystAssessment.Tests", "HealthCatalystAssessment.Tests\HealthCatalystAssessment.Tests.csproj", "{BA230E14-95E7-4953-9014-B3CB157AA6E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthCatalyst.Assessment.API.Tests", "HealthCatalystAssessment.Tests\HealthCatalyst.Assessment.API.Tests.csproj", "{BA230E14-95E7-4953-9014-B3CB157AA6E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5929C8B8-1E9C-420C-8D47-51E22B3B8F30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthCatalyst.Assessment.Domain", "HealthCatalyst.Assessment.Domain\HealthCatalyst.Assessment.Domain.csproj", "{747A7E00-7315-4284-B0BD-49DF7C394B38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthCatalyst.Assessment.Domain.Tests", "HealthCatalyst.Assessment.Domain.Tests\HealthCatalyst.Assessment.Domain.Tests.csproj", "{4FFB152A-69AB-410E-82DB-F45B4D53342D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CD683C5D-2BE8-414C-9BBF-3B595812F60C}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Desktop\README.md = ..\..\..\Desktop\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +32,21 @@ Global
 		{BA230E14-95E7-4953-9014-B3CB157AA6E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA230E14-95E7-4953-9014-B3CB157AA6E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA230E14-95E7-4953-9014-B3CB157AA6E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{747A7E00-7315-4284-B0BD-49DF7C394B38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{747A7E00-7315-4284-B0BD-49DF7C394B38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{747A7E00-7315-4284-B0BD-49DF7C394B38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{747A7E00-7315-4284-B0BD-49DF7C394B38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FFB152A-69AB-410E-82DB-F45B4D53342D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FFB152A-69AB-410E-82DB-F45B4D53342D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FFB152A-69AB-410E-82DB-F45B4D53342D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FFB152A-69AB-410E-82DB-F45B4D53342D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BA230E14-95E7-4953-9014-B3CB157AA6E7} = {5929C8B8-1E9C-420C-8D47-51E22B3B8F30}
+		{4FFB152A-69AB-410E-82DB-F45B4D53342D} = {5929C8B8-1E9C-420C-8D47-51E22B3B8F30}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EB0754DB-D68B-4628-9C1D-74222ED16D4C}

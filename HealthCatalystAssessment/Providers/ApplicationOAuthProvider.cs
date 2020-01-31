@@ -9,9 +9,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using HealthCatalystAssessment.Models;
+using HealthCatalyst.Assessment.API.Models;
 
-namespace HealthCatalystAssessment.Providers
+namespace HealthCatalyst.Assessment.API.Providers
 {
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {

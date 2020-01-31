@@ -11,10 +11,11 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using HealthCatalystAssessment.Areas.HelpPage.ModelDescriptions;
-using HealthCatalystAssessment.Areas.HelpPage.Models;
+using HealthCatalyst.Assessment.API.Areas.HelpPage.ModelDescriptions;
+using HealthCatalyst.Assessment.API.Areas.HelpPage.Models;
+using HealthCatalyst.Assessment.API.Models;
 
-namespace HealthCatalystAssessment.Areas.HelpPage
+namespace HealthCatalyst.Assessment.API.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {
@@ -247,8 +248,27 @@ namespace HealthCatalystAssessment.Areas.HelpPage
             GenerateRequestModelDescription(apiModel, modelGenerator, sampleGenerator);
             GenerateResourceDescription(apiModel, modelGenerator);
             GenerateSamples(apiModel, sampleGenerator);
+            GenerateApiModel(apiModel, sampleGenerator);
 
             return apiModel;
+        }
+
+        private static void GenerateApiModel(HelpPageApiModel apiModel, HelpPageSampleGenerator sampleGenerator)
+        {
+            var apiDescription = apiModel.ApiDescription;
+
+            var statusCodesAttrib = apiDescription.ActionDescriptor.GetCustomAttributes<HttpResponseCodesAttribute>();
+
+            var isAnonymous = apiDescription.ActionDescriptor.GetCustomAttributes<AllowAnonymousAttribute>().Any()
+            || apiDescription.ActionDescriptor.ControllerDescriptor.GetCustomAttributes<AllowAnonymousAttribute>().Any();
+
+            if (!isAnonymous && apiDescription.ActionDescriptor.GetFilterPipeline().Where(f => f.Instance is System.Web.Mvc.IAuthorizationFilter).Any())
+                apiModel.RequiresAuthorization = true;
+
+            if (statusCodesAttrib.Any())
+                apiModel.HttpResponseCodes = statusCodesAttrib.FirstOrDefault().HttpResponseCodes;
+
+            //return apiModel;
         }
 
         private static void GenerateUriParameters(HelpPageApiModel apiModel, ModelDescriptionGenerator modelGenerator)

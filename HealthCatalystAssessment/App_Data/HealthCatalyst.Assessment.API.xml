@@ -1,0 +1,1010 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HealthCatalyst.Assessment.API</name>
+    </assembly>
+    <members>
+        <member name="M:HealthCatalyst.Assessment.API.Filters.ActionExceptionFilter.OnException(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            Manages all unhandled exceptions
+            </summary>
+            <param name="actionExecutedContext"></param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Filters.ActionExceptionFilter.BuildResponse(System.Exception)">
+            <summary>
+            Builds the proper response type based on the error type
+            </summary>
+            <param name="exception"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Filters.ApiActionFilterProvider">
+            <summary>
+            An HTTP configuration provider to enable HTTP filtering
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Filters.ApiActionFilterProvider.#ctor(Unity.IUnityContainer)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="container"></param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Filters.ApiActionFilterProvider.GetFilters(System.Web.Http.HttpConfiguration,System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>
+            Registers the filters with the Unity container for a particular action method
+            </summary>
+            <param name="configuration"></param>
+            <param name="actionDescriptor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Filters.ApiActionFilterProvider.RegisterFilterProviders(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Registers http filters provided in the config
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Filters.ApiNotFoundFilter">
+            <summary>
+            Converts <c>null</c> return values into an HTTP 404 return code.
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Filters.ApiNotFoundFilter.OnActionExecuted(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+             Validates HTTP GET request and, if data value was not found, returns HTTP NOTFOUND response.
+            </summary>
+            <param name="actionExecutedContext"></param>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Filters.DBTransactionFilter">
+            <summary>
+            Automatically open and close dbConnection with a transaction. 
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Filters.DBTransactionFilter.DbSession">
+            <summary>
+            Creates and manage db sessions.
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Filters.DBTransactionFilter.OnActionExecuting(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            Manage database initiation and transactions for API when a request is received.
+            </summary>
+            <param name="actionContext"></param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Filters.DBTransactionFilter.OnActionExecuted(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            Manage database initiation and transactions for API when a response is to be sent.
+            </summary>
+            <param name="actionExecutedContext"></param>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Filters.ModelValidatorFilter">
+            <summary>
+            Manage model state validation
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Filters.ModelValidatorFilter.OnActionExecuting(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            Manage model state validation on a request is received.
+            </summary>
+            <param name="actionContext"></param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Filters.SimulatedLatencyFilter.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="latencyMS"></param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Filters.SimulatedLatencyFilter.OnActionExecuting(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            Manage database initiation and transactions for API when a request is received.
+            </summary>
+            <param name="actionContext"></param>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Formatters.DateFormatConverter">
+            <summary>
+            Converts the json serialized date as specified.
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.MappingConfig.Mapper">
+            <summary>
+            Configured mapping configuration.
+            </summary>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.UnityConfig">
+            <summary>
+            Specifies the Unity configuration for the main container.
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.UnityConfig.Container">
+            <summary>
+            Configured Unity Container.
+            </summary>
+        </member>
+        <member name="F:HealthCatalyst.Assessment.API.UnityConfig.DatabaseName">
+            <summary>
+            A reference name for the default ISessionFactory instances
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.UnityConfig.RegisterComponents(Unity.IUnityContainer)">
+            <summary>
+            Register components
+            </summary>
+            <param name="container"></param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.UnityConfig.InitiateDataContext(Unity.IUnityContainer)">
+            <summary>
+            Initializes a database session for connecting to the database
+            </summary>
+            <param name="container"></param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.UnityConfig.RegisterTypes(Unity.IUnityContainer)">
+            <summary>Registers the type mappings with the Unity container.</summary>
+            <param name="container">The unity container to configure.</param>
+            <remarks>There is no need to register concrete types such as controllers or API controllers (unless you want to 
+            change the defaults), as Unity allows resolving a concrete type even if it was not previously registered.</remarks>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.UnityWebApiActivator">
+            <summary>
+            Provides the bootstrapping for integrating Unity with WebApi when it is hosted in ASP.NET.
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.UnityWebApiActivator.Start">
+            <summary>
+            Integrates Unity when the application starts.
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.UnityWebApiActivator.Shutdown">
+            <summary>
+            Disposes the Unity container when the application is shut down.
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the model description generator.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>The <see cref="T:HealthCatalyst.Assessment.API.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:HealthCatalyst.Assessment.API.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+            Describes a type model.
+            </summary>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+            Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+            Use this attribute to change the name of the <see cref="T:HealthCatalyst.Assessment.API.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.Models.HelpPageApiModel.HttpResponseCodes">
+            <summary>
+            List of HTTP response codes
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.Models.HelpPageApiModel.RequiresAuthorization">
+            <summary>
+            Flag to track authorization requirement
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:HealthCatalyst.Assessment.API.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:HealthCatalyst.Assessment.API.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+            Gets or sets the <see cref="T:HealthCatalyst.Assessment.API.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+            Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+            Gets or sets the <see cref="T:HealthCatalyst.Assessment.API.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+            Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+            Gets or sets the <see cref="T:HealthCatalyst.Assessment.API.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+            Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+            Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+            stopping when the factory successfully returns a non-<see langref="null"/> object.
+            </summary>
+            <remarks>
+            Collection includes just <see cref="M:HealthCatalyst.Assessment.API.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+            <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,HealthCatalyst.Assessment.API.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,HealthCatalyst.Assessment.API.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:HealthCatalyst.Assessment.API.Areas.HelpPage.ObjectGenerator"/>) and other
+            factories in <see cref="P:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},HealthCatalyst.Assessment.API.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Creates a new <see cref="T:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleKey"/> based on media type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleKey.#ctor(HealthCatalyst.Assessment.API.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,HealthCatalyst.Assessment.API.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:HealthCatalyst.Assessment.API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HealthCatalyst.Assessment.API.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HealthCatalyst.Assessment.API.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="appDataPath">The physical path to XML document.</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Controllers.HomeController.DownloadFile(System.String)">
+            <summary>
+            Quick and dirty Download file
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Controllers.TeamController">
+            <summary>
+            An interface to establish the routes and actions of team activities
+            </summary>
+        </member>
+        <member name="F:HealthCatalyst.Assessment.API.Controllers.TeamController.searchFacade">
+            <summary>
+            A facade to the domain services that manage the business rules for this request
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Controllers.TeamController.#ctor(HealthCatalyst.Assessment.API.Facades.TeammateSearchFacade)">
+            <summary>
+            Constructor for dependency injection       
+            </summary>
+            <param name="searchFacade">Facade encapsulating people search activities within the domain services</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Controllers.TeamController.SearchTeam(System.String)">
+            <summary>
+            Searches the team for a teammate with specific value that could be found in the first and/or lastname
+            </summary>
+            <param name="term">The terms to search by (i.e. first name or last name)</param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Controllers.TeamController.CreateTeammate(HealthCatalyst.Assessment.API.Models.Team.CreateTeammateRequest)">
+            <summary>
+            Saves a new teammate
+            </summary>
+            <param name="body">The body of the request as a JSON representation of the CreateTeammateRequest DTO.</param>
+            <returns></returns>
+            <remarks>
+                Validation happens automatically via global action filter
+                 Exception handling also happens automatically via global action filter
+                 Logging happens automaticaly via global action filter
+                 Transaction Management happens automatically via local action filter (per DBTransactionFilter attribute)
+             </remarks>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Controllers.TeamController.GetTeammate(System.Int64)">
+            <summary>
+            Gets an teammate based on the teammate's identifier
+            </summary>
+            <param name="id">The teammate's identifier</param>
+            <returns>An individual teammate</returns>
+            <remarks>Null check for return value is done in ApiNotFound global action filter</remarks>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Controllers.TeamController.GetTeam">
+            <summary>
+            Gets all teammates on the roster
+            </summary>
+            <returns>The list of individual team members</returns>
+            <remarks>Null check for return value is done in ApiNotFound global action filter</remarks>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Facades.TeammateSearchFacade">
+            <summary>
+            A facade for the People API, responsible primarily for transformation of DTOs between the controller and the domain service.
+            </summary>
+        </member>
+        <member name="F:HealthCatalyst.Assessment.API.Facades.TeammateSearchFacade.service">
+            <summary>
+            Manages the roster
+            </summary>
+        </member>
+        <member name="F:HealthCatalyst.Assessment.API.Facades.TeammateSearchFacade.mapper">
+            <summary>
+            Maps dtos and entities
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Facades.TeammateSearchFacade.#ctor">
+            <summary>
+            Parameterless constructor to support Mocks.
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Facades.TeammateSearchFacade.#ctor(HealthCatalyst.Assessment.Domain.Services.IRosterService,AutoMapper.IMapper)">
+            <summary>
+            Default constructor for dependency injection
+            </summary>
+            <param name="service">A service to retreive from the roster domain</param>
+            <param name="mapper">A DTO-Entity mapper</param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Facades.TeammateSearchFacade.SearchTeam(System.String)">
+            <summary>
+            Searches for a teammate with specific value that could be found in the first and/or lastname
+            </summary>
+            <param name="term"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Facades.TeammateSearchFacade.CreateTeammate(HealthCatalyst.Assessment.API.Models.Team.CreateTeammateRequest)">
+            <summary>
+            Add a new teammate to the team
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Facades.TeammateSearchFacade.GetTeammate(System.Int64)">
+            <summary>
+            Get a specific teammate
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Facades.TeammateSearchFacade.GetTeam">
+            <summary>
+            Get all teammates on a team
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Logging.Logger">
+            <summary>
+            Writes data to the log
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Logging.Logger.Write(System.String,System.Boolean)">
+            <summary>
+            Writes message on same line
+            </summary>
+            <param name="msg"></param>
+            <param name="append"></param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Logging.Logger.WriteLine(System.String)">
+            <summary>
+            Writes message with new line
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Logging.Logger.WriteError(System.String,System.Exception)">
+            <summary>
+            Writes an exception message
+            </summary>
+            <param name="errorMsg"></param>
+            <param name="ex"></param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Logging.Logger.WriteWarning(System.String,System.Exception)">
+            <summary>
+            Writes a warning message
+            </summary>
+            <param name="warningMsg"></param>
+            <param name="ex"></param>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Models.AcceptedContentActionResult`1">
+            <summary>
+            An accepted content object that does not return strings with extra quotation marks.  
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Models.AcceptedContentActionResult`1.#ctor(`0,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="response"></param>
+            <param name="location"></param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Models.AcceptedContentActionResult`1.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            HTTP Response handler
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Models.CreatedContentActionResult`1">
+            <summary>
+            A created content object that does not return strings with extra quotation marks.  
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Models.CreatedContentActionResult`1.#ctor(`0,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="response"></param>
+            <param name="location"></param>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Models.CreatedContentActionResult`1.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            HTTP Response handler
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Models.HttpResponseCodesAttribute">
+            <summary>
+            Attribute that returns the HTTP response code for the API documentation
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Models.HttpResponseCodesAttribute.#ctor(System.Net.HttpStatusCode[])">
+            <summary>
+            Attribute that returns the HTTP response code for the API documentation
+            </summary>
+            <param name="statusCodes"></param>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.HttpResponseCodesAttribute.HttpResponseCodes">
+            <summary>
+            The http response codes
+            </summary>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Models.Team.CreateTeammateRequest">
+            <summary>
+            A Create Teammate DTO object for a request to a Create a teammate 
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.CreateTeammateRequest.FirstName">
+            <summary>
+            The teammate's common first name
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.CreateTeammateRequest.LastName">
+            <summary>
+            The teammate's family name
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.CreateTeammateRequest.BirthDate">
+            <summary>
+            The birthdate of this teammate
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.CreateTeammateRequest.Height">
+            <summary>
+            The teammate's height
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.CreateTeammateRequest.PrimaryPosition">
+            <summary>
+            The teammate's primary position on the court
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.CreateTeammateRequest.IsStarter">
+            <summary>
+            Indicates whether the teammate is the everyday starter 
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.CreateTeammateRequest.Interests">
+            <summary>
+            The teammate's interests
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.CreateTeammateRequest.Address">
+            <summary>
+            The last known home street address of the teammate
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.CreateTeammateRequest.City">
+            <summary>
+            The last known city where the teammate lived
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.CreateTeammateRequest.State">
+            <summary>
+            The last known state where the teammate lived
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.CreateTeammateRequest.Zipcode">
+            <summary>
+            The last known zipcode where the teammate lived
+            </summary>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Models.Team.CreateTeammateRequest.Equals(System.Object)">
+            <summary>
+            Determines whether the specified object is equal to the current object
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Models.Team.CreateTeammateRequest.GetHashCode">
+            <summary>
+            Serves as the default hash object
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HealthCatalyst.Assessment.API.Models.Team.CreateTeammateRequest.Equals(HealthCatalyst.Assessment.Domain.Models.Teammate)">
+            <summary>
+            Determines whether the specified object is equal to the current object
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HealthCatalyst.Assessment.API.Models.Team.CreateTeammateResponse">
+            <summary>
+            A Create Teammate DTO object for responding to a Create Teammate Request
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.CreateTeammateResponse.ID">
+            <summary>
+            The identifier for the teammate
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.CreateTeammateResponse.FirstName">
+            <summary>
+            The teammate's common first name
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.CreateTeammateResponse.LastName">
+            <summary>
+            The teammate's family name
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.GetTeammateResponse.ID">
+            <summary>
+            The identifier for the teammate
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.GetTeammateResponse.FirstName">
+            <summary>
+            The teammate's common first name
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.GetTeammateResponse.LastName">
+            <summary>
+            The teammate's family name
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.GetTeammateResponse.Age">
+            <summary>
+            The currently age of this teammate
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.GetTeammateResponse.BirthDate">
+            <summary>
+            The birthdate of this teammate
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.GetTeammateResponse.Height">
+            <summary>
+            The teammate's height
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.GetTeammateResponse.PrimaryPosition">
+            <summary>
+            The teammate's primary position on the court
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.GetTeammateResponse.IsStarter">
+            <summary>
+            Indicates whether the teammate is an everyday starter 
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.GetTeammateResponse.Interests">
+            <summary>
+            The teammate's interests
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.GetTeammateResponse.Address">
+            <summary>
+            The last known home street address of the teammate
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.GetTeammateResponse.City">
+            <summary>
+            The last known city where the teammate lived
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.GetTeammateResponse.State">
+            <summary>
+            The last known state where the teammate lived
+            </summary>
+        </member>
+        <member name="P:HealthCatalyst.Assessment.API.Models.Team.GetTeammateResponse.Zipcode">
+            <summary>
+            The last known zipcode where the teammate lived
+            </summary>
+        </member>
+    </members>
+</doc>
