@@ -675,7 +675,7 @@
         </member>
         <member name="M:HealthCatalyst.Assessment.API.Controllers.TeamController.CreateTeammate(HealthCatalyst.Assessment.API.Models.Team.CreateTeammateRequest)">
             <summary>
-            Saves a new teammate
+            Adds/Creates a new teammate
             </summary>
             <param name="body">The body of the request as a JSON representation of the CreateTeammateRequest DTO.</param>
             <returns></returns>
