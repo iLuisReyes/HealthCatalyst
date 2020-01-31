@@ -29,7 +29,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 - In Visual Studio, at the menu, select TEST -> RUN -> All Tests
 
-The unit test explorer window should display running all 22 tests and all 22 tests should pass.
+The unit test explorer window should display running all 22 tests and all 22 tests should pass.  If for any reason the Unit Tests do not work, enable the VS settings as displayed with the instructions at https://github.com/fixie/fixie/issues/193 to allow Visual Studio to find the Test adapters.
 
 
 ## Built With
