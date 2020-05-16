@@ -1,6 +1,6 @@
 # HealthCatalyst Assessment
 
-The code within this repository represents a technical assessment for Health Catalyst as performed by Luis Reyes
+The code within this repository represents a technical assessment for Health Catalyst
 
 ## Getting Started
 
@@ -125,7 +125,6 @@ Rather, the assumption that is being made with this implementation is that Integ
 ## Author
 
 - Luis Reyes 
-
 
 
 
